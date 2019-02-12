@@ -72,14 +72,9 @@ class Home extends Component {
   };
   componentDidMount() {
     document.title = "Movie Database App with React";
-    if (localStorage.getItem("HomeState")) {
-      const state = JSON.parse(localStorage.getItem("HomeState"));
-      this.setState({ ...state });
-    } else {
-      this.setState({ loading: true });
-      const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-      this.fetchItems(endpoint);
-    }
+    this.setState({ loading: true });
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    this.fetchItems(endpoint);
   }
   render() {
     return (
